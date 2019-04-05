@@ -4,7 +4,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 echo "Installing choclatey..."
 #iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) -Verbose:$false
 echo "Enabling Hyper-V..."
-#Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+#Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart
 echo "Installing VS2019, SSMS, OpenVPN, Office 2016, Slack, Docker"
 #choco install visualstudio2019professional -y
 #choco install sql-server-management-studio -y
