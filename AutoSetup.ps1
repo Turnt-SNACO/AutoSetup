@@ -17,21 +17,21 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 
 #Intstall software
 DisplayProgress("Installing choclatey")
-Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) -Verbose:$false
+Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) > logfile.txt
 DisplayProgress("Enabling Hyper-V")
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart >> logfile.txt
 DisplayProgress("Installing Visual Studio 2019 Professional")
-choco install visualstudio2019professional -y > $null
+choco install visualstudio2019professional -y >> logfile.txt
 DisplayProgress("Installing SQL Server Management Studio")
-choco install sql-server-management-studio -y > $null
+choco install sql-server-management-studio -y >> logfile.txt
 DisplayProgress("Installing OpenVPN")
-choco install openvpn -y > $null
+choco install openvpn -y >> logfile.txt
 DisplayProgress("Installing Microsoft Office 2016")
-choco install microsoft-office-deployment -y > $null
+choco install microsoft-office-deployment -y >> logfile.txt
 DisplayProgress("Installing Slack")
-choco install slack > $null
+choco install slack >> logfile.txt
 DisplayProgress("Installing Docker")
-choco install docker > $null
+choco install docker >> logfile.txt
 
 #Return execution policy to original state
 DisplayProgress("Resetting Execution Policy to previous value")
@@ -46,6 +46,7 @@ Start-Sleep 1
 
 #Finish and prompt for restart
 Write-Output "Auto Setup Complete."
+Write-Output "Check logfile.txt for a complete log of installation."
 $Reboot = Read-Host -Prompt "A restart is required. Restart now? (y/n)"
 If ($Reboot -eq "y")
 {
