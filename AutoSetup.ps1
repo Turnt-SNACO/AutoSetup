@@ -21,17 +21,17 @@ Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://cho
 DisplayProgress("Enabling Hyper-V")
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart
 DisplayProgress("Installing Visual Studio 2019 Professional")
-choco install visualstudio2019professional -y
+choco install visualstudio2019professional -y > $null
 DisplayProgress("Installing SQL Server Management Studio")
-choco install sql-server-management-studio -y
+choco install sql-server-management-studio -y > $null
 DisplayProgress("Installing OpenVPN")
-choco install openvpn -y
+choco install openvpn -y > $null
 DisplayProgress("Installing Microsoft Office 2016")
-choco install microsoft-office-deployment -y
+choco install microsoft-office-deployment -y > $null
 DisplayProgress("Installing Slack")
-choco install slack
+choco install slack > $null
 DisplayProgress("Installing Docker")
-choco install docker
+choco install docker > $null
 
 #Return execution policy to original state
 DisplayProgress("Resetting Execution Policy to previous value")
