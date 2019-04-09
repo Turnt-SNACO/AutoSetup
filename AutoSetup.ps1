@@ -6,7 +6,7 @@ $PercentDone = 0
 function DisplayProgress($message)
 {
     $global:Iteration++
-    $global:PercentDone = ($global:Iteration / 11 * 100)
+    $global:PercentDone = ($global:Iteration / 12 * 100)
     Write-Progress -Activity 'Running AutoSetup' -Status $message -PercentComplete $global:PercentDone
 }
 
@@ -32,6 +32,8 @@ DisplayProgress("Installing Slack")
 choco install slack >> logfile.txt
 DisplayProgress("Installing Docker")
 choco install docker >> logfile.txt
+DisplayProgress("Installing RoyalTS")
+DisplayProgress("Installing Docker") >> logfile.txt
 
 #Return execution policy to original state
 DisplayProgress("Resetting Execution Policy to previous value")
